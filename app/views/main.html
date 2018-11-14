@@ -1,0 +1,31 @@
+<div >
+  <input ng-model="q" id="search" class="form-control" placeholder="You can search movie">
+<select ng-model="pageSize" id="pageSize" class="form-control" >
+    <option value="5">5</option>
+    <option  value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+  </select>
+<ul ng-repeat="item in data | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize">
+
+<li ng-click="redirectToDraftPage()">
+<a>{{item}}</a>
+    </li>
+
+
+   
+
+<!-- <div ng-show="!data.length">No colors available</div> -->
+<!-- <li  ng-if="data.length == 0">
+  <p>No appointment available</p>
+</li> -->
+
+
+  </ul>
+  <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+    Previous
+  </button> {{currentPage+1}}/{{numberOfPages()}}
+  <button  ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
+    Next
+  </button>
+</div>
